@@ -3,7 +3,7 @@
 <body>
 
 <div id="controls">
-    <button id="bBack" style="width:10%">Back</button>
+    <button id="bStop" style="width:10%">Stop</button>
     <span style="width:10%">Answer:</span>
     <input id="iAnswer" type="text" style="width:68%"></input>
     <button id="bSubmit" style="width:10%">Submit</button>
@@ -121,6 +121,28 @@ function showResults()
     resultsForm.style.left = 10;
 }
 
+function onStop(val)
+{
+    if (val)
+    {
+        clicked = true;
+        document.getElementById("bStop").innerHTML = "Go";
+    }
+    else
+    {
+        clicked = false;
+        document.getElementById("bStop").innerHTML = "Stop";
+    }
+}
+
+document.getElementById("bStop").onclick = function()
+{
+    if (clicked == true)
+        onStop(false);
+    else
+        onStop(true);
+}
+
 var millisecondsPerFrame = 500;
 const runGameForImage = async (image) =>
 {
@@ -148,9 +170,9 @@ var clicked = false;
 canvas.onclick = function() 
 { 
     if (clicked)
-        clicked = false;
+        onStop(false);
     else 
-        clicked = true;
+        onStop(true);
 }
 
 function addResult(roundIndex, questionIndex, time, answer)
@@ -167,13 +189,13 @@ function addResult(roundIndex, questionIndex, time, answer)
 }
 
 var answer = document.getElementById("iAnswer");
-answer.onfocus = function(){ clicked = true; }
+answer.onfocus = function(){ onStop(true); }
 
 var answered = false;
 var submitButton = document.getElementById("bSubmit");
 submitButton.onclick = function()
 {
-    clicked = true;
+    onStop(true);
     if (answer.value == "")
     {
         alert("You need to type you answer in the box above the image. I've made sure it's paused so don't worry, it won't affect your score!");
@@ -184,7 +206,7 @@ submitButton.onclick = function()
     answer.value = "";
     
     answered = true;
-    clicked = false;
+    onStop(false);
 }
 
 canvas.style.visibility = "hidden";
