@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<img class="PlaceImage" width="0" height="0" src="Places/twickenham.jpg" style="visibility: hidden">
+<img class="PlaceImage" width="0" height="0" src="Places/sydney.jpg" style="visibility: hidden">
+<img class="PlaceImage" width="0" height="0" src="Places/Rojales.jpeg" style="visibility: hidden">
+<img class="PlaceImage" width="0" height="0" src="Places/GoldenGatBridge.jpg" style="visibility: hidden">
+<img class="PlaceImage" width="0" height="0" src="Places/beehive bro 2.jpg" style="visibility: hidden">
+<img class="PlaceImage" width="0" height="0" src="Places/xscape-building.jpg" style="visibility: hidden">
+<img class="PlaceImage" width="0" height="0" src="Places/stonehenge.jpg" style="visibility: hidden">
+<img class="PlaceImage" width="0" height="0" src="Places/ChippingNorton.jpg" style="visibility: hidden">
+<img class="PlaceImage" width="0" height="0" src="Places/TajMahaal.jpg" style="visibility: hidden">
+<img class="PlaceImage" width="0" height="0" src="Places/BigBen.jpg" style="visibility: hidden">
+
+<img class="AnimalImage" width="0" height="0" src="Animals/Girafe.jpeg" style="visibility: hidden">
+<img class="AnimalImage" width="0" height="0" src="Animals/Zebra.jpg" style="visibility: hidden">
+<img class="AnimalImage" width="0" height="0" src="Animals/albatross.jpg" style="visibility: hidden">
+<img class="AnimalImage" width="0" height="0" src="Animals/cat.jpg" style="visibility: hidden">
+<img class="AnimalImage" width="0" height="0" src="Animals/cheetahs_2858137a.webp" style="visibility: hidden">
+<img class="AnimalImage" width="0" height="0" src="Animals/clown-fish.jpg" style="visibility: hidden">
+<img class="AnimalImage" width="0" height="0" src="Animals/elephants.jpeg" style="visibility: hidden">
+<img class="AnimalImage" width="0" height="0" src="Animals/flatcoat.jpg" style="visibility: hidden">
+<img class="AnimalImage" width="0" height="0" src="Animals/hedgehog.jpeg" style="visibility: hidden">
+<img class="AnimalImage" width="0" height="0" src="Animals/komodo-dragon.jpg" style="visibility: hidden">
+
+<canvas id="myCanvas" width="100%" height="100%" style="border:0px solid #d3d3d3;">
+Your browser does not support the HTML5 canvas tag.
+</canvas>
+
+<script>
+var canvas = document.getElementById("myCanvas");
+canvas.width  = window.innerWidth;
+canvas.height = window.innerHeight;
+var ctx = canvas.getContext("2d");
+
+var currentMultiplier = 0.01;
+var currentPx = function(img) 
+{ 
+    return img.naturalWidth * currentMultiplier;
+};
+
+var currentPy = function(img) 
+{ 
+    return img.naturalHeight * currentMultiplier;
+};
+
+var currentStartX = function(img)
+{
+    return (img.naturalWidth - currentPx(img)) * 0.5;
+}
+
+var currentStartY = function(img)
+{
+    return (img.naturalHeight - currentPy(img)) * 0.5;
+}
+
+function getImages(roundIndex)
+{
+    if (roundIndex == 0)
+        return document.getElementsByClassName("PlaceImage");
+    if (roundIndex == 1)
+        return document.getElementsByClassName("AnimalImage");
+
+    return null;
+}
+
+const sleep = (milliseconds) => {
+  return new Promise(resolve => setTimeout(resolve, milliseconds))
+}
+
+const runGame = async () => 
+{
+    var currentRoundIndex = 0;
+    var images = getImages(currentRoundIndex);
+
+    while (images != null)
+    {
+        for (let i = 0; i < images.length; i += 1)
+        {
+            await runGameForImage(images[i]);
+        }
+
+        currentRoundIndex += 1;
+        images = getImages(currentRoundIndex);
+    }
+}
+
+const runGameForImage = async (image) =>
+{
+    currentMultiplier = 0.01;
+    while (currentMultiplier <= 1.0)
+    {
+        while (clicked == true) 
+        {
+            console.log("sleeping");
+            await sleep(10);
+        }
+        ctx.drawImage(image, currentStartX(image), currentStartY(image), currentPx(image), currentPy(image), 0, 0, window.innerWidth, window.innerHeight);
+        await sleep(100);
+        currentMultiplier += 0.01;
+    }
+}
+
+var clicked = false;
+window.onclick = function() 
+{ 
+    if (clicked)
+        clicked = false;
+    else 
+        clicked = true;
+    }
+
+runGame();
+
+</script>
