@@ -42,6 +42,17 @@ Your browser does not support the HTML5 canvas tag.
     <form id="round1Results"></form>
 </div>
 
+<div id="instructions" style="position:absolute; top:5%; left:5%;">
+    <h2>Remember:</h2>
+    <h3>To Stop the Clock:</h3>
+    <p> - Click on the Stop button</p>
+    <p> - Click on the image while the clock is running</p>
+    <p> - Click on the answer box</p>
+    <h3>To Resume the Clock:</h3>
+    <p> - Click on the "Go" button</p>
+    <p> - Click on the image while the clock is stopped</p>
+</div>
+
 <button id="bStart" style="position:absolute; top:40%; left:40%;">Start Playing</button>
 
 <script>
@@ -87,10 +98,13 @@ const sleep = (milliseconds) => {
 
 var currentRoundIndex = 0;
 var currentImageIndex = 0;
+var instructions = document.getElementById("instructions");
 
 const runGame = async () => 
 {
     document.getElementById("bStart").style.visibility = "hidden";
+    instructions.style.visibility = "hidden";
+
     canvas.style.visibility = "visible";
     document.getElementById("controls").style.visibility = "visible";
 
