@@ -1,63 +1,147 @@
 <!DOCTYPE html>
 <html>
+    <head>
+        <link rel="stylesheet" href="https://unpkg.com/purecss@2.0.3/build/pure-min.css" integrity="sha384-cg6SkqEOCV1NbJoCu11+bm0NvBRc8IYLRGXkmNrqUBfTjmMYwNKPWBTIKyw9mHNJ" crossorigin="anonymous">
+        <link rel="stylesheet" href="index.css">
+    </head>
 <body>
 
-<div id="controls">
-    <button id="bStop" style="width:10%">Stop</button>
-    <span style="width:10%">Answer:</span>
-    <input id="iAnswer" type="text" style="width:68%"></input>
-    <button id="bSubmit" style="width:10%">Submit</button>
+<div class="inGame background">
+    <div id="controls" style="height: 5%;">
+        <button id="bStop" class="in-game-button-left">Stop</button>
+        <input id="iAnswer" type="text" value=""></input>
+        <button id="bSubmit" class="in-game-button-right">Submit</button>
+    </div>
+    
+    <canvas id="myCanvas" style="border:0px solid #d3d3d3; position:relative;">
+    Your browser does not support the HTML5 canvas tag.
+    </canvas>
 </div>
 
-<canvas id="myCanvas" width="100%" height="90%" style="border:0px solid #d3d3d3;">
-Your browser does not support the HTML5 canvas tag.
-</canvas>
-
-<img class="PlaceImage" width="0" height="0" src="Places/twickenham.jpg" style="visibility: hidden">
-<img class="PlaceImage" width="0" height="0" src="Places/sydney.jpg" style="visibility: hidden">
-<img class="PlaceImage" width="0" height="0" src="Places/Rojales.jpeg" style="visibility: hidden">
-<img class="PlaceImage" width="0" height="0" src="Places/GoldenGatBridge.jpg" style="visibility: hidden">
-<img class="PlaceImage" width="0" height="0" src="Places/beehive bro 2.jpg" style="visibility: hidden">
-<img class="PlaceImage" width="0" height="0" src="Places/xscape-building.jpg" style="visibility: hidden">
-<img class="PlaceImage" width="0" height="0" src="Places/stonehenge.jpg" style="visibility: hidden">
-<img class="PlaceImage" width="0" height="0" src="Places/ChippingNorton.jpg" style="visibility: hidden">
-<img class="PlaceImage" width="0" height="0" src="Places/TajMahaal.jpg" style="visibility: hidden">
-<img class="PlaceImage" width="0" height="0" src="Places/BigBen.jpg" style="visibility: hidden">
-
-<img class="AnimalImage" width="0" height="0" src="Animals/Girafe.jpeg" style="visibility: hidden">
-<img class="AnimalImage" width="0" height="0" src="Animals/Zebra.jpg" style="visibility: hidden">
-<img class="AnimalImage" width="0" height="0" src="Animals/albatross.jpg" style="visibility: hidden">
-<img class="AnimalImage" width="0" height="0" src="Animals/cat.jpg" style="visibility: hidden">
-<img class="AnimalImage" width="0" height="0" src="Animals/cheetahs_2858137a.webp" style="visibility: hidden">
-<img class="AnimalImage" width="0" height="0" src="Animals/clown-fish.jpg" style="visibility: hidden">
-<img class="AnimalImage" width="0" height="0" src="Animals/elephants.jpeg" style="visibility: hidden">
-<img class="AnimalImage" width="0" height="0" src="Animals/flatcoat.jpg" style="visibility: hidden">
-<img class="AnimalImage" width="0" height="0" src="Animals/hedgehog.jpeg" style="visibility: hidden">
-<img class="AnimalImage" width="0" height="0" src="Animals/komodo-dragon.jpg" style="visibility: hidden">
-
-<div id="ResultsForm" style="visibility: hidden; width:100%; height:100%; position:absolute; top:0%; left:0%">
-    <form id="round0Results"></form>
-    <form id="round1Results"></form>
+<div id="0-resources" class="resources">
+    <img class="image-place" src="Places/twickenham.jpg"/>
+    <img class="image-place" src="Places/sydney.jpg"/>
+    <img class="image-place" src="Places/Rojales.jpeg"/>
+    <img class="image-place" src="Places/GoldenGatBridge.jpg"/>
+    <img class="image-place" src="Places/beehive bro 2.jpg"/>
+    <img class="image-place" src="Places/xscape-building.jpg"/>
+    <img class="image-place" src="Places/stonehenge.jpg"/>
+    <img class="image-place" src="Places/ChippingNorton.jpg"/>
+    <img class="image-place" src="Places/TajMahaal.jpg"/>
+    <img class="image-place" src="Places/BigBen.jpg"/>
+    
+    <img class="image-animal" src="Animals/Girafe.jpeg"/>
+    <img class="image-animal" src="Animals/Zebra.jpg"/>
+    <img class="image-animal" src="Animals/albatross.jpg"/>
+    <img class="image-animal" src="Animals/cat.jpg"/>
+    <img class="image-animal" src="Animals/clown-fish.jpg"/>
+    <img class="image-animal" src="Animals/elephants.jpeg"/>
+    <img class="image-animal" src="Animals/flatcoat.jpg"/>
+    <img class="image-animal" src="Animals/hedgehog.jpeg"/>
+    <img class="image-animal" src="Animals/komodo-dragon.jpg"/>
 </div>
 
-<div id="instructions" style="position:absolute; top:5%; left:5%;">
-    <h2>Welcome to the Jackson/Morton Family Game!</h2>
-    <h2>Remember:</h2>
-    <h3>As soon as you know the answer, stop the clock!</h3>
-    <h3>To Stop the Clock:</h3>
-    <p> - Click on the Stop button</p>
-    <p> - Click on the image while the clock is running</p>
-    <p> - Click on the answer box</p>
-    <h3>To Resume the Clock:</h3>
-    <p> - Click on the "Go" button</p>
-    <p> - Click on the image while the clock is stopped</p>
-    <h3>After typing your answer..</h3>
-    <p> - Click submit and be ready for the next question to start immediately</p>
-    <button id="bStart">Start Playing</button>
+<div id="1-resources" class="resources">
+    <img id="Jason Bourne" class="image-filmTest" src="Round2/films/Jason-bourne.jpg"/>
+    <img id="Eiffel Tower - Paris" class="image-placeTest" src="Round2/Eiffel_Tower_1986-151.jpg"/>
+
+
+    <p style="visibility: hidden">Films - Please give the name of the film or franchise</p>
+    <img id="Jason Bourne" class="image-film" src="Round2/films/Jason-bourne.jpg"/>
+    <img id="James Bond" class="image-film" src="Round2/films/james-bond.jpg"/>
+    <img id="Pulp Fiction" class="image-film" src="Round2/films/pulp-fiction.jpg"/>
+    <img id="Jurassic Park" class="image-film" src="Round2/films/jurassic-park.jpg"/>
+    <img id="Shawshank Redemption" class="image-film" src="Round2/films/shawshank-redemption.jpg"/>
+    <img id="The Matrix" class="image-film" src="Round2/films/thematrix.jpeg"/>
+    <img id="Indiana Jones" class="image-film" src="Round2/films/indianajones.jpg"/>
+    <img id="Harry Potter" class="image-film" src="Round2/films/film-harrypotter.jpg"/>
+    <img id="Forest Gump" class="image-film" src="Round2/films/film-forestgump.jpg"/>
+    <img id="Lord Of The Rings" class="image-film" src="Round2/films/film-lordoftherings.jpeg"/>
+
+    <p style="visibility: hidden">Places Of Interest - Please give the name of the famous place</p>
+    <img id="Eiffel Tower - Paris" class="image-place2" src="Round2/Eiffel_Tower_1986-151.jpg"/>
+    <img id="London Eye" class="image-place2" src="Round2/london_holiday_places_of_interest-834437.jpg"/>
+    <img id="The Great Pyramids - Cairo" class="image-place2" src="Round2/pyramids-cairo.jpeg"/>
+    <img id="St. Paul's Cathederal" class="image-place2" src="Round2/st-pauls.jpeg"/>
+    <img id="Leaning Tower Of Pisa" class="image-place2" src="Round2/leaningtower.jpeg"/>
+    <img id="Statue Of Liberty" class="image-place2" src="Round2/StatueOfLiberty.jpg"/>
+    <img id="Great Wall Of China" class="image-place2" src="Round2/GreatWall.jpg"/>
+    <img id="Machu Picchu" class="image-place2" src="Round2/MachuPicchu.jpg"/>
+    <img id="EasterIsland" class="image-place2" src="Round2/EasterIsland.jpg"/>
+</div>
+
+<div class="results background">
+    <table class="pure-table">
+        <thead class="table-header">
+            <tr>
+                <th>Round No.</th>
+                <th>Question No.</th>
+                <th>Given Answer</th>
+                <th>Correct Answer</th>
+                <th>Time Taken</th>
+                <th>Correct</th>
+                <th>Incorrect</th>
+                <th>Score</th>
+            </tr>
+        </thead>
+        <tbody id="resultsTable">
+        </tbody>
+    </table>
+    <table class="pure-table">
+        <thead>
+            <tr>
+                <th class="ScoreHead">TotalScore:</th>
+                <th id="final-score">0</th>
+            </tr>
+        </thead>
+    </table>
+</div>
+
+<div class="pre-round background">
+    <div style="height: 25vh; top: 37.5vh;">
+        <h3>Entering Next Round on: </h3>
+        <h3 id="RoundTitle"></h3> 
+        <button id="start-round-button">Let's Go</button>
+    </div>
+</div>
+
+<div class="homePage background">
+    <div style="top: 10%; height: 80%">
+        <h2>
+            Welcome to the Zoom Out Game! 
+        </h2>
+        <h2>
+            Remember: 
+        </h2>
+        <h3>
+            As soon as you know the answer, stop the clock!
+            <br/>
+            To Stop the Clock:
+        </h3>
+        <p>
+            - Click on the Stop button
+            <br/>
+            - Click on the image while the clock is running
+            <br>
+            - Click on the answer box
+        </p>
+        <h3>To Resume the Clock:</h3>
+        <p> 
+            - Click on the "Go" button
+            <br/>
+            - Click on the image while the clock is stopped
+        </p>
+        <h3>After typing your answer..</h3>
+        <p> - Click submit and be ready for the next question to start immediately</p>
+        <button id="bStart">Start Playing</button>
+    </div>
 </div>
 
 
 <script>
+
+var debug = true;
+
 var canvas = document.getElementById("myCanvas");
 canvas.width  = window.innerWidth;
 canvas.height = window.innerHeight * 0.9;
@@ -84,12 +168,27 @@ var currentStartY = function(img)
     return (img.naturalHeight - currentPy(img)) * 0.5;
 }
 
+const roundCount = 2;
 function getImages(roundIndex)
 {
+    if (!debug)
+    {
     if (roundIndex == 0)
-        return document.getElementsByClassName("PlaceImage");
+        return document.getElementsByClassName("image-film");
     if (roundIndex == 1)
-        return document.getElementsByClassName("AnimalImage");
+        return document.getElementsByClassName("image-place2");
+    }
+    else
+    {
+        if (roundIndex == 0)
+            return document.getElementsByClassName("image-filmTest");
+        if (roundIndex == 1)
+            return document.getElementsByClassName("image-placeTest");
+    }
+    // if (roundIndex == 0)
+    //     return document.getElementsByClassName("image-filmTest");
+    // if (roundIndex == 1)
+    //     return document.getElementsByClassName("image-placeTest");
 
     return null;
 }
@@ -101,39 +200,96 @@ const sleep = (milliseconds) => {
 var currentRoundIndex = 0;
 var currentImageIndex = 0;
 var instructions = document.getElementById("instructions");
-
-const runGame = async () => 
+var roundNames = ["Films/Film Franchises", "Places Of Interest"]
+const runRound = async(roundIndex) =>
 {
-    document.getElementById("bStart").style.visibility = "hidden";
-    instructions.style.visibility = "hidden";
-
-    canvas.style.visibility = "visible";
-    document.getElementById("controls").style.visibility = "visible";
-
-    var images = getImages(currentRoundIndex);
-
-    while (images != null)
+    if (roundIndex >= roundCount)
     {
+        showResults();
+        return;
+    }
+
+    let title = document.getElementById("RoundTitle");
+    title.innerHTML = roundNames[roundIndex];
+
+    hideAllOfClass("inGame");
+    showAllOfClass("pre-round");
+
+    let button = document.getElementById("start-round-button");
+    button.onclick = async () =>
+    {
+        hideAllOfClass("pre-round");
+        showAllOfClass("inGame");
+
+        let images = getImages(roundIndex);
         for (currentImageIndex = 0; currentImageIndex < images.length; currentImageIndex += 1)
         {
             answered = false;
             await runGameForImage(images[currentImageIndex]);
         }
 
-        currentRoundIndex += 1;
-        images = getImages(currentRoundIndex);
+        runRound(roundIndex + 1);
     }
-
-    showResults();
 }
+
+const runGame = async () => 
+{
+    console.log("Hiding start page");
+    hideAllOfClass("homePage");
+    console.log("Showing game page");
+    showAllOfClass("inGame");
+
+    runRound(0);
+    // var images = getImages(currentRoundIndex);
+
+    // while (images != null)
+    // {
+    //     for (currentImageIndex = 0; currentImageIndex < images.length; currentImageIndex += 1)
+    //     {
+    //         answered = false;
+    //         await runGameForImage(images[currentImageIndex]);
+    //     }
+
+    //     currentRoundIndex += 1;
+    //     images = getImages(currentRoundIndex);
+    // }
+
+
+    // showResults();
+}
+
+function setVisibilityAll(array, visibility)
+{
+    for (let i = 0; i < array.length; ++i)
+    {
+        console.log("Hiding: " + array[i].id);
+        array[i].style.visibility = visibility;
+        setVisibilityAll(array[i].children, visibility);
+    }
+}
+
+function hideAllOfClass(className)
+{
+    let elements = document.getElementsByClassName(className);
+    setVisibilityAll(elements, "hidden");
+}
+
+function showAllOfClass(className)
+{
+    let elements = document.getElementsByClassName(className);
+    setVisibilityAll(elements, "visible");
+}
+
+showAllOfClass("homePage");
+// function forEachInClass(className, callable)
+// {
+//     document.getElementsByClassName(className).forEach(callable);
+// }
 
 function showResults()
 {
-    canvas.style.visibility = "hidden";
-    document.getElementById("controls").style.visibility = "hidden";
-    let resultsForm = document.getElementById("ResultsForm")
-    resultsForm.style.visibility = "visible";
-    resultsForm.style.left = 10;
+    hideAllOfClass("inGame");
+    showAllOfClass("results");
 }
 
 function onStop(val)
@@ -158,11 +314,16 @@ document.getElementById("bStop").onclick = function()
         onStop(true);
 }
 
-var millisecondsPerFrame = 500;
+var currentCorrectAnswer = "";
+var millisecondsPerFrame = 200;
 const runGameForImage = async (image) =>
 {
+    currentCorrectAnswer = image.id;
+    onStop(true);
     currentMultiplier = 0.01;
-    while (currentMultiplier <= 0.9)
+    ctx.drawImage(image, currentStartX(image), currentStartY(image), currentPx(image), currentPy(image), 0, 0, window.innerWidth, window.innerHeight);
+
+    while (answered == false)
     {
         while (clicked == true && answered == false) 
         {
@@ -177,7 +338,9 @@ const runGameForImage = async (image) =>
 
         ctx.drawImage(image, currentStartX(image), currentStartY(image), currentPx(image), currentPy(image), 0, 0, window.innerWidth, window.innerHeight);
         await sleep(millisecondsPerFrame);
-        currentMultiplier += 0.01;
+        
+        if (currentMultiplier < 1.0)
+            currentMultiplier += 0.01;
     }
 }
 
@@ -190,6 +353,70 @@ canvas.onclick = function()
         onStop(true);
 }
 
+function addResultToTable(roundIndex, questionIndex, time, answer)
+{
+    let table = document.getElementById("resultsTable");
+    let row = document.createElement("tr");
+    table.appendChild(row);
+
+    let addEntry = function (row, entry)
+    {
+        let domEntry = document.createElement("td");
+        domEntry.innerHTML = entry;
+        row.appendChild(domEntry);
+        return domEntry;
+    }
+
+    addEntry(row, String(roundIndex + 1)).className = "index-td";
+    addEntry(row, String(questionIndex + 1)).className = "index-td";
+    addEntry(row, answer);
+    addEntry(row, currentCorrectAnswer);
+
+    let timeValue = (time * 100) * (millisecondsPerFrame / 1000);
+    addEntry(row, String(timeValue.toFixed(2)));
+
+    let correctButton = addEntry(row, "Correct");
+    let wrongButton = addEntry(row, "Incorrect");
+    let score = addEntry(row, String(0));
+    score.className = "score-entry";
+
+    correctButton.style.backgroundColor = "grey";
+    correctButton.style.color = "gainsboro";
+    wrongButton.style.backgroundColor = "grey";
+    wrongButton.style.color = "gainsboro";
+
+    let scoreValue = 2 - time;
+    correctButton.addEventListener("click", function (event) 
+    { 
+        row.style.backgroundColor = "limegreen"; 
+        row.style.color = "gainsboro";
+
+        score.innerHTML = String(scoreValue);
+        sumScores();
+    });
+
+    wrongButton.addEventListener("click", function (event) 
+    { 
+        row.style.backgroundColor = "crimson"; 
+        row.style.color = "gainsboro";
+
+        score.innerHTML = String(0);
+        sumScores();
+    });
+}
+
+function sumScores()
+{
+    let scores = document.getElementsByClassName("score-entry");
+    let totalScore = 0.0;
+    for (let i = 0; i < scores.length; ++i)
+    {
+        totalScore += parseFloat(scores[i].innerHTML);
+    }
+
+    document.getElementById("final-score").innerHTML = String(totalScore.toFixed(2));
+}
+
 function addResult(roundIndex, questionIndex, time, answer)
 {
     let formName = "round" + String(roundIndex) + "Results";
@@ -198,13 +425,20 @@ function addResult(roundIndex, questionIndex, time, answer)
     let label = document.createElement("label");
     label.innerHTML = "    (" + String(roundIndex) + ":" + String(questionIndex) + ")  \"" + String(answer) + "\" in " + String(time * (millisecondsPerFrame / 1000) / 0.01) + "s";
 
+    let answerLabel = document.createElement("label");
+    answerLabel.innerHTML = "Answer: " + currentCorrectAnswer;
+
     let br = document.createElement("br");
     form.appendChild(label);
+    form.appendChild(answerLabel);
     form.appendChild(br);
 }
 
 var answer = document.getElementById("iAnswer");
-answer.onfocus = function(){ onStop(true); }
+answer.onfocus = function()
+{ 
+    onStop(true); 
+}
 
 var answered = false;
 var submitButton = document.getElementById("bSubmit");
@@ -213,11 +447,11 @@ submitButton.onclick = function()
     onStop(true);
     if (answer.value == "")
     {
-        alert("You need to type you answer in the box above the image. I've made sure it's paused so don't worry, it won't affect your score!");
+        alert("You need to type you answer in the box above the image. I've made sure it's paused so don't worry, it won't affect your score!\nTIP: If you don't know the answer just make sure there is something typed in the answer box.");
         return;
     }
     
-    addResult(currentRoundIndex, currentImageIndex, currentMultiplier, answer.value);
+    addResultToTable(currentRoundIndex, currentImageIndex, currentMultiplier, answer.value);
     answer.value = "";
     
     answered = true;

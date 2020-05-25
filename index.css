@@ -1,0 +1,175 @@
+
+html, body
+{
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 0;
+    background-color: gainsboro;
+}
+body
+{
+    margin: 0%;
+    /* background-color: blue; */
+    align-content: center;
+}
+
+div
+{
+    margin: 0;
+    padding: 0;
+    background-color: blue;
+    align-content: center;
+    text-align: center;
+    width: calc(100vw - 10vh);
+    height: 90vh;
+    /* border: thick solid #0000FF; */
+    
+    border-radius: 5vh;
+    visibility: hidden;
+    position: fixed;
+    top: 5vh;
+    left:5vh;
+    color: gainsboro;
+
+    overflow: hidden;
+    /* position: absolute; */
+}
+.background 
+{
+    border-style: double;
+    border-color: gainsboro;
+
+    border-width: 3vh;
+    border-radius: 5vh;
+
+    width: calc(100vw - 10vh);
+    height: 90vh;
+    
+    position: fixed;
+    top: 2vh;
+    left: 2vh;
+}
+.results
+{
+    overflow: scroll;
+}
+#controls
+{
+    top: calc(5vh + 4px);
+    width: calc(100vw - ((5vh + 4px) * 2));
+    height: 5%;
+    left: calc(5vh + 4px);
+}
+canvas
+{
+    top: calc(5% + 6px);
+    width: calc(100% - ((4px) * 2));
+    height: calc(95%);
+    border-radius: 0px 0px 5vh 5vh;
+}
+/* #controls
+{
+    width: calc(100vw - 2*(5vh - 1vh));
+    height: 5%;
+    left: 2%;
+    top: calc(2vh + 2vh + 1vh);
+} */
+button
+{
+    width: 15%;
+    --barder-radius: calc(100vh * 0.05);
+    background-color: gainsboro;
+    color: blue;
+    font-weight: bold;
+    border-radius: var(--barder-radius);
+}
+.in-game-button-left
+{
+    border-radius: 5vh 0px 0px 5vh;
+}
+.in-game-button-right
+{
+    border-radius: 0px 5vh 5vh 0px;
+}
+
+
+input
+{
+    text-align: center;
+}
+.resources img
+{
+    visibility: hidden;
+    position: absolute;
+    top:0%;
+    left:0%;
+}
+/*.inGame
+{
+    background-color: blue;
+}
+.toolbar button
+{
+    width: 100%;
+} */
+.visibility-owner
+{
+    visibility: hidden;
+}
+.visibility-item
+{
+    visibility: inherit;
+}
+#bStop
+{
+    float: left;
+    width: 15%;
+}
+#iAnswer
+{
+    width: 69%;
+}
+#bSubmit
+{
+    float: right;
+    width: 15%;
+}
+tr
+{
+    text-align: center;
+    font-weight: bold;
+}
+.index-td
+{
+    width: 5%;
+}
+.table-header
+{
+    background-color: gainsboro;
+    height: 10%
+}
+.pure-table
+{
+    vertical-align: center;
+    border: none;
+    width: calc(100vw - (2 * 5vh));
+    /* height: calc(100vh - (2 * 5vh)); */
+    /* position: absolute; 
+    top: 0; 
+    bottom: 0; 
+    left: 0; 
+    right: 0; */
+    /* width: 100%; */
+}
+.ScoreHead
+{
+    width: 90%;
+    text-align: left;
+}
+#final-score
+{
+    width: 10%;
+}
